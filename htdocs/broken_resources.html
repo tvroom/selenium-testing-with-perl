@@ -1,0 +1,19 @@
+<html>
+<head>
+	<title>Broken resources test page</title>
+</head>
+<body>
+	<h1>Broken resources test page</h1>
+	<style type="text/css">
+	#logo {
+		background:transparent url(/missing_logo_call_from_css.png) no-repeat top left;
+		float:left;
+		height: 20px;
+		width: 120px;
+	}
+	</style>
+	<div id="logo"></div>
+	<img src="broken_image.png" alt="broken_image">
+	<script src="broken_script.js" type="text/javascript">
+</body>
+</html>
