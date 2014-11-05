@@ -1,3 +1,5 @@
+# Test to see what default timeout is for submitting a form with Webdriver defaults
+
 use Selenium::Remote::Driver;
 use Time::HiRes qw/time/;
 
@@ -15,7 +17,5 @@ if($@) {
 	print "Error: $@\n";
 	print "Error or timeout occured after: ".(time()-$start). " seconds\n";
 }
-for(1..25) {
-print $driver->get_title() ."\n";
-sleep 1;
-}
+
+$driver->quit();

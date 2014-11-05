@@ -1,3 +1,6 @@
+# Test to see what default page load timeout is for webdriver when 
+# navigating to a new page
+
 use Selenium::Remote::Driver;
 use Time::HiRes qw/time/;
 
