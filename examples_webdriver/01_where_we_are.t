@@ -5,6 +5,7 @@ use Selenium::Remote::Driver;
 use Test::More;
 
 my $driver = Selenium::Remote::Driver->new(default_finder => 'css');
+#$driver->debug_on; # can enable if you want to see the requests made out to selenium server
 
 $driver->get('http://www.google.com');
 
@@ -23,6 +24,7 @@ $driver->find_element('Selenium','partial_link_text')->click();
 
 $title = $driver->get_title();
 like($title, qr/Testing.*Selenium/, "Title seems to be about testing with Selenium");
+sleep 10; # For demo purposes wait a bit before closing so we can see the final page
 $driver->quit();
 
 done_testing();
