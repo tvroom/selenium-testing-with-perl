@@ -4,7 +4,7 @@ use Data::Dumper;
 use Test::More;
 
 my $sel=WWW::Selenium->new(
-	browser_url => "http://timvroom.com/selenium/ga_test.html"
+	browser_url => "http://timvroom.com"
 );
 $sel->start();
 $sel->{session_id} = $sel->get_string(
