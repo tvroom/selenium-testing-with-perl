@@ -1,5 +1,8 @@
 Examples, presentation, scripts & pages in htdocs for Selenium Testing with Perl for Pittsburgh Perl Workshop
 
+Slides are also available online at:
+http://www.slideshare.net/vroom/testing-your-website-with-selenium-perl
+
 Directory layout
 --------------------
 
