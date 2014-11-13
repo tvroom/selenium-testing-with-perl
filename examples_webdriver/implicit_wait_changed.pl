@@ -1,5 +1,5 @@
-# Test to see what default page load timeout is for webdriver when 
-# navigating to a new page
+# Show that increasing implicit_wait_timeout makes us look for #notthere longer
+
 
 use Selenium::Remote::Driver;
 use Time::HiRes qw/time/;

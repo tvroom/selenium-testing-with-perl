@@ -9,6 +9,7 @@ ok(js_defined("window.jQuery"), "jQuery installed on $_[0]");
 ok(js_defined("window.jQuery.cookie"), "jQuery cookie plugin installed");
 ok(js_defined("window.Handlebars"), "has Handlebars installed");
 
+$driver->quit();
 done_testing();
 
 sub js_defined {

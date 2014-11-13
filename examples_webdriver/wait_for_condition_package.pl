@@ -49,7 +49,8 @@ sub wait_for_condition {
 my $driver = MySelenium->new();
 $driver->get("http://timvroom.com/selenium/js_testing.html");
 print STDERR "Wait for h1 there...\n";
-$driver->wait_for_condition('return $("h1").length > 0', 2000, 250);
+$driver->wait_for_condition('return $("h1").length > 0', 5000, 1000);
+
 print STDERR "\n\nWait for #notthere element there...\n";
-$driver->wait_for_condition('return $("#notthere").length > 0', 2000, 250);
+$driver->wait_for_condition('return $("#notthere").length > 0', 5000, 1000);
 $driver->quit();

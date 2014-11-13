@@ -7,13 +7,18 @@ use Test::More;
 my $driver = Selenium::Remote::Driver->new(default_finder => 'css');
 #$driver->debug_on; # can enable if you want to see the requests made out to selenium server
 
+# Navigate to google.com
 $driver->get('http://www.google.com');
 
+# Type in query into q named input field
 $driver->find_element('q','name')->send_keys('Pittsburgh Perl Workshop');
+
+# Wait for up to 5 seconds on find_elements, before saying element isn't there
 $driver->set_implicit_wait_timeout(5000);
 
-#$driver->find_element('//*[@id="rso"]/div[2]/li[1]/div/h3/a','xpath')->click(); 
-$driver->find_element('#rso li h3 a')->click(); 
+# click on first search result
+$driver->find_element('#rso li h3 a')->click();
+ 
 my $title = $driver->get_title();
 like($title, qr/The Pittsburgh Perl Workshop/, "Title for PPW is what is expected");
 

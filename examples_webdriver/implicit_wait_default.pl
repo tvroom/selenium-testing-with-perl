@@ -1,5 +1,5 @@
-# Test to see what default page load timeout is for webdriver when 
-# navigating to a new page
+# Test to see what the implicit wait timeout is for looking for an element
+# Default is 0 ms which we'll see for looking for #notthere (actual operation may take longer than that)
 
 use Selenium::Remote::Driver;
 use Time::HiRes qw/time/;
