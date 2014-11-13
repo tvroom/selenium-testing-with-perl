@@ -1,3 +1,5 @@
+# Sample code to verify analytics tracking -- in this case GA tracking
+
 use WWW::Selenium;
 use WWW::Selenium::NetworkCapture;
 use Data::Dumper;
@@ -6,7 +8,8 @@ use Test::More;
 my $sel=WWW::Selenium->new(
 	browser_url => "http://timvroom.com"
 );
-$sel->start();
+
+# Call this below instead of a $sel->start -- it's a $sel->start with some special config to capture network traffic
 $sel->{session_id} = $sel->get_string(
 	"getNewBrowserSession",
 	$sel->{browser_start_command},
