@@ -3,6 +3,8 @@
 #
 # Package / code to run it all in a single script for simplicity in the proof of concept
 #
+# Contains $DEBUG variable so you can verify how it's working with messages about steps/
+# progress
 
 
 package MySelenium;
