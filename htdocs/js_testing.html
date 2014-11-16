@@ -12,7 +12,13 @@
 </ul>
 <form>
 	<input type="text" name="newitem" value="" id="newitem">
-	<input type="submit" name="Add Item">
+	<input type="submit" name="Add Item" onclick="additem()">
 </form>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+	function additem() {
+		$('.shopping-list').append("<li>" + $('#newitem').val() + "</li>");
+		$('#newitem').val("");
+	}
+</script>
 </html>
