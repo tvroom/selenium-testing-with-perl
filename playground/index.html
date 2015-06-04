@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Selenium Playground</title>
+
+    <!-- Bootstrap -->
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.appear/0.3.3/jquery.appear.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <style type="text/css">
+	 body { padding: 10px }
+         .ok { padding: 10px }
+	 .pass { color: green; }
+	 .fail { color: red; }
+    </style>
+
+
+    <script type="text/javascript">
+	var expected = {};
+	var results = {};
+	var numtests = 13;
+	function link_clicked() {
+		expected['5'] = 1;
+	}
+
+	function ran_this_js_function() {
+		expected['7'] = 1;
+	}
+	
+	function got_return_from_js_function() {
+		var return_val = Math.floor(Math.random()*4)+1;
+		expected['8'] = return_val;
+		return return_val;
+	}
+
+        function check_results() {
+		results = {}; // Clear out last run
+		results['1'] = $('#answer1').val() == document.title;
+		results['2'] = $('#name').val() == "Kilgore Trout";
+		results['3'] = $('#occupation').val() == "scifiauthor";
+		results['4'] = $('#answer4').val() == expected['4'];
+		results['5'] = expected['5'] == 1;
+		results['6'] = $('#answer6').val() == expected['6'];
+		results['7'] = expected['7'] == 1;
+		results['8'] = $('#answer8').val() == expected['8'];
+		results['9'] = $('[name=wrotebook]:checked').val() == "wrotebook";
+		results['10'] = $('#answer10').val() == expected['10'];
+		results['11'] = $('#answer11').val() == expected['11'];
+		results['12'] = window.outerWidth == 850 && window.outerHeight == 650; 
+		results['13'] = $('#answer13').val() == expected['13'];
+
+		var passes = 0;
+		for (i=1; i <= numtests; i++) {
+			$('#ok_'+i).removeClass('pass');
+			$('#ok_'+i).removeClass('fail');
+			if(results[i]) {
+				$('#ok_'+i).text('OK');
+				$('#ok_'+i).addClass('pass');
+				
+				passes = passes+1;
+			} else {
+				$('#ok_'+i).text('NOT OK');
+				$('#ok_'+i).addClass('fail');
+			}
+		}
+		$('#showresults').text("Passed "+ passes + " of " + numtests + " tests");
+
+		console.log(results);
+	}
+    </script>
+  </head>
+  <body>
+    <h2>Selenium Testing Tasks</h2>
+    <ol>
+	<li><span id="ok_1" class="ok"></span>Grab page title and place title text in answer slot #1</li>
+	<li><span id="ok_2" class="ok"></span>Fill out name section of form to be Kilgore Trout</li>
+	<li><span id="ok_3" class="ok"></span>Set occupation on form to Sci-Fi Author</li>
+	<li><span id="ok_4" class="ok"></span>Count number of blue_boxes on page after form and enter into answer box #4</li>
+	<li><span id="ok_5" class="ok"></span>Click link that says 'click me'</li>
+	<li><span id="ok_6" class="ok"></span>Find red box on its page find class applied to it, and enter into answer box #6</li>
+	<li><span id="ok_7" class="ok"></span>Run JavaScript function as: ran_this_js_function() from your Selenium script</li>
+	<li><span id="ok_8" class="ok"></span>Run JavaScript function as: got_return_from_js_function() from your Selenium script, take returned value and place it in answer slot #8</li>
+	<li><span id="ok_9" class="ok"></span>Mark radio button on form for written book? to Yes</li>
+	<li><span id="ok_10" class="ok"></span>Get the text from the Red Box and place it in answer slot #10</li>
+	<li><span id="ok_11" class="ok"></span>Which box is on top? orange or green -- place correct color in answer slot #11</li>
+	<li><span id="ok_12" class="ok"></span>Set browser width to 850 and height to 650</li>
+	<li><span id="ok_13" class="ok"></span>Type into answer slot 13 yes or no depending on whether item by id of ishere is on the page</li>
+    </ol>
+   <div id="showresults">
+   </div> 
+    <input type="button" id="checkresults" value="Check Results!" onclick="check_results()">
+
+    <h2>Test form / area to manipulate</h2>
+    <form id="testform">
+    Name: <input type="text" name="name" id="name"></input><br>
+    Occupation:
+    <select name="occupation" id="occupation">
+        <option value="astronaut">Astronaut</option>
+	<option value="politician">Politician</option>
+	<option value="scifiauthor">Science Fiction Author</option>
+    </select>
+
+    <input type="radio" name="wrotebook" value="wrotebook">Wrote Book
+    <input type="radio" name="wrotebook" value="didntwritebook">Didn't Write Book
+
+    </form>
+    <h3>Blue boxes to count</h3>
+    <script type="text/javascript">
+	var boxes = Math.floor(Math.random()*4)+1;
+
+	for (i = 0; i < boxes; i++) {
+		document.write("<span class='bluebox' style='background:#00f;color:#fff; padding:10px'>Blue Box</span>&nbsp;&nbsp;"); 
+	}
+	expected['4'] = boxes;
+    </script>
+    <h3>Links to click</h3>
+	<a href="">Link 1</a> <a href="">Link 2</a> <a href="" onclick="link_clicked();return false">click me</a>
+    
+    <h3>Red box to inspect</h3>
+    <script type="text/javascript">
+	var classes = ['crimson','red','cardinal','maroon','ruby'];
+	var letters = ['A','B','C'];
+	var red_class = classes[Math.floor(Math.random()*classes.length)];
+	var red_letter = letters[Math.floor(Math.random()*letters.length)];
+	document.write("<span id='redbox' class='"+red_class+"' style='background:#f00;color:#fff; padding:10px'>Red Box "+red_letter+"</span>&nbsp;&nbsp;");
+	expected['6'] = red_class;
+	expected['10'] = "Red Box " +red_letter;
+    </script>
+
+    <h3>Boxes to check arrangement of</h3>
+    <script type="text/javascript">
+	var box_order = [];
+	if (Math.random() > 0.5) {
+		box_order = ['green','orange'];
+	} else {
+		box_order = ['orange','green'];
+	}
+	for(i =0; i< box_order.length; i++) {
+		document.write("<span id='"+box_order[i]+"box' ' style='background:"+box_order[i]+";color:#fff; padding:10px'>"+box_order[i]+" Box </span>&nbsp;&nbsp;<br><br><br><br>");
+	}
+	expected['11'] = box_order[0];
+    </script>
+
+
+
+    <h2>Answer slots</h2>
+    1. Title of page: <input type="text" id="answer1"></input> <br>
+    4. Number of blue boxes?: <input type="text" id="answer4"></input><br>
+    6. Class of red box?: <input type="text" id="answer6"></input><br>
+    8. Value of return from got_return_from_js_function?: <input type="text" id="answer8"></input><br>
+    10. Text from the red box: <input type="text" id="answer10"></input><br>
+    11. Which box is on top? Orange or Green: <input type="text" id="answer11"></input><br>
+    13:	Is an item with id of ishere on this page enter yes or no  <input type="text" id="answer13"></input><br>
+    
+
+
+	<div id="bottom" style="background:black;color:white;padding:10px">
+		Bottom Div -- Scroll to me
+	</div>
+	<script type="text/javascript">
+		if (Math.random() > 0.5) {
+			document.write('<div id="ishere"></div>');
+			expected['13'] = 'yes';
+		} else {
+			expected['13'] = 'no';
+		}
+	</script>
+  </body>
+</html>
