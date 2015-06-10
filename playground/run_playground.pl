@@ -1,6 +1,6 @@
 use Selenium::Firefox;
 
-my $driver = Selenium::Firefox->new();
+my $driver = Selenium::Remote::Driver->new();
 
 $driver->get("http://timvroom.com/selenium/playground");
 
@@ -78,6 +78,24 @@ my $elems = $driver->find_elements('#ishere','css');
 $driver->find_element_by_id('answer13')->send_keys(@$elems ? "yes" : "no");
 print "Answered 13\n";
 
+#14
+my $displayed = $driver->find_element_by_id('purplebox')->is_displayed();
+$driver->find_element_by_id('answer14')->send_keys($displayed ? "yes" : "no");
+print "Answer 14\n";
+
+#15
+$driver->set_implicit_wait_timeout(11000);
+$driver->find_element('click then wait', 'link_text')->click();
+$driver->find_element('click after wait', 'link_text')->click();
+
+print "Completed 15\n";
+
+sleep 1;
+#16
+$driver->accept_alert();
+print "Completed 16\n";
+
+print "Waiting for your input so you have time to click Check Results on your own\n";
 <>;
 
 =======
