@@ -56,7 +56,6 @@ my $arrange_answer = $green_location->{y} < $orange_location->{y} ? "green" : "o
 $driver->find_element_by_id('answer11')->send_keys($arrange_answer);
 print "Answered 11\n";
 
-<<<<<<< HEAD
 #12
 $driver->set_window_size(650,850);
 print "Did Task 12\n";
@@ -93,6 +92,3 @@ $driver->find_element_by_id('checkresults')->click();
 print "Press enter when you check results\n";
 <>;
 
-=======
->>>>>>> 45b24b565a7c93232948b372fba1d90a248a5e0c
-<>;
