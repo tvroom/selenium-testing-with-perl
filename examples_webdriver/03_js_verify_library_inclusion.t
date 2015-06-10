@@ -1,3 +1,6 @@
+# Test to verify JS library inclusion
+# Only one is included on test page, so 2 expected to fail
+
 use Selenium::Remote::Driver;
 use Test::More;
 
