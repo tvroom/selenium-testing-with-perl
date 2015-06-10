@@ -19,8 +19,11 @@
     
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<<<<<<< HEAD
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.appear/0.3.3/jquery.appear.min.js"></script>
+=======
+>>>>>>> 45b24b565a7c93232948b372fba1d90a248a5e0c
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <style type="text/css">
@@ -34,7 +37,11 @@
     <script type="text/javascript">
 	var expected = {};
 	var results = {};
+<<<<<<< HEAD
 	var numtests = 13;
+=======
+	var numtests = 11;
+>>>>>>> 45b24b565a7c93232948b372fba1d90a248a5e0c
 	function link_clicked() {
 		expected['5'] = 1;
 	}
@@ -62,8 +69,11 @@
 		results['9'] = $('[name=wrotebook]:checked').val() == "wrotebook";
 		results['10'] = $('#answer10').val() == expected['10'];
 		results['11'] = $('#answer11').val() == expected['11'];
+<<<<<<< HEAD
 		results['12'] = window.outerWidth == 850 && window.outerHeight == 650; 
 		results['13'] = $('#answer13').val() == expected['13'];
+=======
+>>>>>>> 45b24b565a7c93232948b372fba1d90a248a5e0c
 
 		var passes = 0;
 		for (i=1; i <= numtests; i++) {
@@ -99,8 +109,11 @@
 	<li><span id="ok_9" class="ok"></span>Mark radio button on form for written book? to Yes</li>
 	<li><span id="ok_10" class="ok"></span>Get the text from the Red Box and place it in answer slot #10</li>
 	<li><span id="ok_11" class="ok"></span>Which box is on top? orange or green -- place correct color in answer slot #11</li>
+<<<<<<< HEAD
 	<li><span id="ok_12" class="ok"></span>Set browser width to 850 and height to 650</li>
 	<li><span id="ok_13" class="ok"></span>Type into answer slot 13 yes or no depending on whether item by id of ishere is on the page</li>
+=======
+>>>>>>> 45b24b565a7c93232948b372fba1d90a248a5e0c
     </ol>
    <div id="showresults">
    </div> 
@@ -166,6 +179,7 @@
     8. Value of return from got_return_from_js_function?: <input type="text" id="answer8"></input><br>
     10. Text from the red box: <input type="text" id="answer10"></input><br>
     11. Which box is on top? Orange or Green: <input type="text" id="answer11"></input><br>
+<<<<<<< HEAD
     13:	Is an item with id of ishere on this page enter yes or no  <input type="text" id="answer13"></input><br>
     
 
@@ -181,5 +195,11 @@
 			expected['13'] = 'no';
 		}
 	</script>
+=======
+    
+
+
+
+>>>>>>> 45b24b565a7c93232948b372fba1d90a248a5e0c
   </body>
 </html>
