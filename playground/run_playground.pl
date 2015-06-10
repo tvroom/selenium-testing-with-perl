@@ -95,6 +95,14 @@ sleep 1;
 $driver->accept_alert();
 print "Completed 16\n";
 
+#17
+$driver->find_element_by_id('submitbutton')->submit();
+print "Completed 17\n";
+
+my $tophead = $driver->find_element_by_id('tophead');
+$driver->mouse_move_to_location(element => $tophead, xoffset => 0, yoffset => 0);
+sleep 5;
+$driver->find_element_by_id('checkresults')->click();
 print "Waiting for your input so you have time to click Check Results on your own\n";
 <>;
 
