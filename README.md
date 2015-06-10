@@ -2,7 +2,8 @@ Examples, presentation, scripts & pages in htdocs for Selenium Testing with Perl
 
 Slides are also available online at:
 http://www.slideshare.net/vroom/testing-your-website-with-selenium-perl  PPW Presentation
-Soon to come... presentation for YAPC NA 2015
+http://www.slideshare.net/vroom/testing-your-website-with-selenium-and-perl YAPCNA 2015 Presentation (Salt Lake City)
+
 
 Directory layout
 --------------------
@@ -12,4 +13,4 @@ Directory layout
 * /examples_seleniumrc/ - Selenium based examples making use of WWW::Selenium and related modules
 * /presentation - Presentation files
 */playground - Playground html file(s)
-  - run_playground_empty.pl and run_playground_answers.pl in /examples_webdriver directory
+  - run_playground_empty.pl and run_playground_answers.pl are in /examples_webdriver directory
