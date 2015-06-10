@@ -1,7 +1,7 @@
 #Simple demo of navigating through some pages with Perl & Webdriver
 # using Selenium::Remote::Driver
 
-use Test::Selenium::Remote::Driver;
+use Selenium::Remote::Driver;
 use Selenium::Remote::WDKeys;
 use Test::More;
 
@@ -24,7 +24,9 @@ like($title, qr/YAPC/, "Title for YAPC page is what is expected");
 
 $driver->find_element('Talks and Schedule', 'link_text')->click();
 $driver->find_element('Schedule','link_text')->click();
-$driver->find_element('Wednesday','link_text')->click();
+
+# Disable when it's Wednesday and it defaults to this page... then switch back later
+#$driver->find_element('Wednesday','link_text')->click();
 $driver->find_element('Selenium','partial_link_text')->click();
 
 $title = $driver->get_title();

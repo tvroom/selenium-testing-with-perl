@@ -3,30 +3,24 @@ use Selenium::Firefox;
 my $driver = Selenium::Remote::Driver->new();
 
 $driver->get("http://timvroom.com/selenium/playground");
-
-
+$driver->set_implicit_wait_timeout(1000);
 
 #1 
 my $title = $driver->get_title();
 $driver->find_element_by_css('#answer1')->send_keys($title);
-
 print "Answered 1\n";
 
 #2
 $driver->find_element_by_name('name')->send_keys('Kilgore Trout');
-
 print "Answered 2\n";
 
 #3
 $driver->find_element_by_css('#occupation > [value=scifiauthor]')->click();
-
 print "Answered 3\n";
 
 #4
 my $boxes = $driver->find_elements('.bluebox','css');
 $driver->find_element_by_id('answer4')->send_keys(scalar @$boxes);
-
-
 print "Answered 4\n";
 
 #5 
@@ -36,7 +30,6 @@ print "Answered 5\n";
 #6 
 my $redbox_class = $driver->find_element_by_id('redbox')->get_attribute('class');
 $driver->find_element_by_id('answer6')->send_keys($redbox_class);
-
 print "Answered 6\n";
 
 #7 
@@ -59,11 +52,6 @@ print "Answered 10\n";
 
 my $orange_location = $driver->find_element_by_id('orangebox')->get_element_location();
 my $green_location = $driver->find_element_by_id('greenbox')->get_element_location();
-
-use Data::Dumper;
-print Dumper($orange_location);
-print Dumper($green_location);
-
 my $arrange_answer = $green_location->{y} < $orange_location->{y} ? "green" : "orange";
 $driver->find_element_by_id('answer11')->send_keys($arrange_answer);
 print "Answered 11\n";
@@ -87,12 +75,11 @@ print "Answer 14\n";
 $driver->set_implicit_wait_timeout(11000);
 $driver->find_element('click then wait', 'link_text')->click();
 $driver->find_element('click after wait', 'link_text')->click();
-
 print "Completed 15\n";
 
-sleep 1;
 #16
 $driver->accept_alert();
+$driver->set_implicit_wait_timeout(1000);  # modal / confirm / alert needs to be closed before we can do this
 print "Completed 16\n";
 
 #17
@@ -101,9 +88,9 @@ print "Completed 17\n";
 
 my $tophead = $driver->find_element_by_id('tophead');
 $driver->mouse_move_to_location(element => $tophead, xoffset => 0, yoffset => 0);
-sleep 5;
+
 $driver->find_element_by_id('checkresults')->click();
-print "Waiting for your input so you have time to click Check Results on your own\n";
+print "Press enter when you check results\n";
 <>;
 
 =======
